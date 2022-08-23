@@ -13,8 +13,8 @@ import Rating from '../Components/Rating'
 
 const ProductScreen = () => {
     const { id } = useParams()
-    const Product = products.find(p => p._id = id)
-    if(Product){console.log(Product)}
+    const Product = products.find(p => +p._id === +id)
+    
   return (
       <div>
           {/* <h3>{Product.name}</h3> */}
@@ -31,7 +31,44 @@ const ProductScreen = () => {
                       <ListGroupItem>
                           <Rating value={ Product.rating} text={`${Product.numReviews} reviews`} />
                       </ListGroupItem>
+                      <ListGroupItem>
+                          Price : ${Product.price}
+                      </ListGroupItem>
+                      <ListGroupItem>
+                          Description : {Product.description}
+                      </ListGroupItem>
                   </ListGroup>
+              </Col>
+              <Col md={3}>
+                  <Card>
+                      <ListGroup>
+                          <ListGroupItem>
+                           <Row>
+                                  <Col>
+                                      Price
+                                  </Col>
+                                  <Col>
+                                      ${Product.price}
+                                  </Col>
+                            </Row>
+                          </ListGroupItem>
+                          <ListGroupItem>
+                           <Row>
+                                  <Col>
+                                      Status
+                                  </Col>
+                                  <Col>
+                                      {Product.countInStock> 0? "In stock":"out of stock"}
+                                  </Col>
+                            </Row>
+                          </ListGroupItem>
+                          <ListGroupItem>
+                              <Row>
+                                   <Button className="btn-block" type="button" disabled={Product.countInStock === 0}>Add to cart</Button>
+                             </Row>
+                          </ListGroupItem>
+                      </ListGroup>
+                  </Card>
               </Col>
           </Row>
           <Link to="/" className="btn my-3">Go back</Link>
