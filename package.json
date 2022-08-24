@@ -7,7 +7,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node Backend/App",
-    "server": "nodemon Backend/App"
+    "server": "nodemon Backend/App",
+    "data:import": "node Backend/Seeder",
+    "data:destroy": "node Backend/Seeder -d"
   },
   "author": "",
   "license": "ISC",
@@ -15,6 +17,7 @@
     "bcryptjs": "^2.4.3",
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
+    "express-async-handler": "^1.2.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.5.2",
     "nodemon": "^2.0.19"

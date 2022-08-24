@@ -24,7 +24,6 @@ export const users = [
     {
         name: "bright asiwe",
         email: "bright@gmail.com",
-        isAdmin: true,
         password:bycript.hashSync("12345",10)
     }
 ]

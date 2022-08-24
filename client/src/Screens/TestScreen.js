@@ -4,7 +4,7 @@ import axios from "axios"
 const TestScreen = () => {
   const fetchData = async () => {
     try {
-      const { data } = await axios.get("/api/product")
+      const { data } = await axios.get("/api/products")
       console.log(data)
     } catch (error) {
       console.log(error)

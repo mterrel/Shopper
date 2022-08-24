@@ -11,6 +11,6 @@ export const connectDb = async () => {
        console.log(`connected on ${conn.connection.host}`)
    } catch (error) {
        console.error(error.message)
-       process.exit()
+       process.exit(1)
    }
 }
