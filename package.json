@@ -8,6 +8,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node Backend/App",
     "server": "nodemon Backend/App",
+     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix project && npm run build --prefix project",
     "data:import": "node Backend/Seeder",
     "data:destroy": "node Backend/Seeder -d"
   },
