@@ -1,6 +1,7 @@
 
 import express, { application } from "express"
 import dotenv from "dotenv"
+import path from 'path'
 import { products } from "./Data/products.js"
 import { connectDb } from "./Config/DbConnect.js"
 import { notFound, errorHandler } from "./Middleware/ErrorMiddleware.js"
@@ -13,7 +14,13 @@ connectDb()
 const port = process.env.PORT
 
 server.use("/api/products",productRouter)
-
+const __dirname = path.resolve()
+if (process.env.NODE_ENV === 'production') {
+    server.use(express.static(path.join(__dirname, '/client/build')))
+    server.get('*', (req, res) => {
+        res.sendFile(path.resolve(__dirname,'client','build','index.html'))
+    })
+}
 server.use(notFound);
 server.use(errorHandler);
 
