@@ -1,8 +1,10 @@
 import mongoose from "mongoose";
 
+const dbUri = process.env.URI || process.env.DATABASE_URL;
+
 export const connectDb = async () => {
    try {
-     const conn = await  mongoose.connect(process.env.URI,{
+     const conn = await  mongoose.connect(dbUri,{
                 useUnifiedTopology: true,
                 useNewUrlParser: true,
                 // useCreateIndex: true
